@@ -8,6 +8,7 @@ data = pd.read_csv("life-expectancy-data.csv")
 
 # Examine and handle missing values
 data = data.dropna(subset=["Life expectancy "])
+# Filling the missing values with the mean value
 for column in ["Alcohol", "percentage expenditure", " BMI ", "Schooling", "GDP"]:
     data[column] = data[column].fillna(data[column].mean())
 

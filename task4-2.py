@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 from sklearn.linear_model import LinearRegression
 
 # Load the dataset
@@ -7,11 +6,11 @@ data = pd.read_csv("life-expectancy-data.csv")
 
 # Filter data to only include rows up to 2019 to train the model
 data = data[data["Year"] <= 2019]
-
+# Finds the unique countries
 countries = data["Country"].unique()
 
 predictions_2020 = {}
-
+# Integrating through the unique countries.
 for country in countries:
     country_data = data[data["Country"] == country]
 

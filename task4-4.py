@@ -1,12 +1,15 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import confusion_matrix, accuracy_score
 
 data = pd.read_csv("ov4-breast-cancer.csv")
+# Replaces the "?" values with NA
 data = data.replace('?', pd.NA)
+# Drops the rows containing NaN
 data = data.dropna()
 
 X = data.drop("classes", axis=1)
@@ -57,6 +60,8 @@ def plot_figure():
     plt.title('Accuracy vs. k Value')
     plt.xlabel('k')
     plt.ylabel('Accuracy')
+    if not os.path.exists("task4_plots"):
+        os.makedirs("task4_plots")
     plt.savefig("task4_plots/accuracy_vs_k_values.png", dpi=300, bbox_inches="tight")
 
 

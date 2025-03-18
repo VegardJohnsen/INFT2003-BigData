@@ -5,7 +5,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 
 
 data = pd.read_csv("H1.csv")
-
+# Drops the columns that with missing values needed for analysis.
 data = data.dropna(subset=["IsCanceled"] + ["ADR", "BookingChanges", "PreviousCancellations",
                                            "PreviousBookingsNotCanceled", "Adults", "Children",
                                            "Babies", "IsRepeatedGuest", "RequiredCarParkingSpaces",
@@ -18,7 +18,7 @@ y = data["IsCanceled"]
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # Implement and train KNN classifier
-k = 5 # Number of neighbours to use
+k = 89 # Number of neighbours to use
 knn = KNeighborsClassifier(n_neighbors=k)
 knn.fit(X_train, y_train)
 
